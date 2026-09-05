@@ -10,8 +10,9 @@ Incorporates deep evaluations of the Top 7 AI Image Converters:
 - Apowersoft / FreeConvert
 Includes Recommendation Engine and Comprehensive FAQs.
 """
+
 from pydantic import BaseModel, Field
-from typing import List, Dict, Any, Optional
+
 
 class ConverterTool(BaseModel):
     id: str
@@ -20,24 +21,24 @@ class ConverterTool(BaseModel):
     category: str
     overview: str
     supported_formats_count: str
-    key_features: List[str]
+    key_features: list[str]
     best_use_cases: str
     recommendation_note: str
-    ai_features: List[str]
+    ai_features: list[str]
     cost_tier: str
     privacy_retention: str
     max_batch_support: bool
     api_available: bool
     raw_support: bool
-    ratings: Dict[str, float] = Field(description="Scores out of 10 for Speed, Quality, Formats, Ease")
+    ratings: dict[str, float] = Field(description="Scores out of 10 for Speed, Quality, Formats, Ease")
 
 class ToolRecommendationResult(BaseModel):
     top_tool: ConverterTool
     match_score: int
-    matched_reasons: List[str]
-    alternative_tools: List[ConverterTool]
+    matched_reasons: list[str]
+    alternative_tools: list[ConverterTool]
 
-TOP_CONVERTERS: List[ConverterTool] = [
+TOP_CONVERTERS: list[ConverterTool] = [
     ConverterTool(
         id="adobe-express",
         rank=1,
@@ -260,18 +261,18 @@ class MarketIntelligenceService:
     """Service providing 2026 AI Image Converter data and recommendation reasoning."""
 
     @staticmethod
-    def get_all_tools() -> List[ConverterTool]:
+    def get_all_tools() -> list[ConverterTool]:
         return TOP_CONVERTERS
 
     @staticmethod
-    def get_tool_by_id(tool_id: str) -> Optional[ConverterTool]:
+    def get_tool_by_id(tool_id: str) -> ConverterTool | None:
         for tool in TOP_CONVERTERS:
             if tool.id == tool_id:
                 return tool
         return None
 
     @staticmethod
-    def get_faqs() -> List[Dict[str, str]]:
+    def get_faqs() -> list[dict[str, str]]:
         return FAQS
 
     @staticmethod
@@ -284,8 +285,8 @@ class MarketIntelligenceService:
         priority: str
     ) -> ToolRecommendationResult:
         """Matches user requirements to the optimal 2026 AI Image Converter."""
-        scores: Dict[str, int] = {t.id: 50 for t in TOP_CONVERTERS}
-        reasons: Dict[str, List[str]] = {t.id: [] for t in TOP_CONVERTERS}
+        scores: dict[str, int] = {t.id: 50 for t in TOP_CONVERTERS}
+        reasons: dict[str, list[str]] = {t.id: [] for t in TOP_CONVERTERS}
 
         use_case = primary_use_case.lower()
 

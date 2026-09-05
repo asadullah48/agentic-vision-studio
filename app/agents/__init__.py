@@ -1,20 +1,30 @@
+"""Multi-agent vision system.
+
+Four single-responsibility agents, coordinated by the orchestrator:
+
+    PerceptionAgent      measures the image
+    FormatReasoningAgent plans the encode
+    ImageTransformAgent  executes it
+    VisionCriticAgent    audits the result and can force a retry
 """
-Multi-Agent Vision System Modules
-"""
+
+from .critic import QualityAudit, VisionCriticAgent
+from .orchestrator import ChatAgentResponse, PipelineExecution, VisionOrchestrator
 from .perception import PerceptionAgent, PerceptionReport
 from .reasoner import FormatReasoningAgent, StrategyDecision
-from .transformer import ImageTransformAgent, TransformResult
-from .critic import VisionCriticAgent, QualityAudit
-from .orchestrator import VisionOrchestrator
+from .transformer import ImageTransformAgent, TransformOutput, TransformResult
 
 __all__ = [
+    "ChatAgentResponse",
+    "FormatReasoningAgent",
+    "ImageTransformAgent",
     "PerceptionAgent",
     "PerceptionReport",
-    "FormatReasoningAgent",
+    "PipelineExecution",
+    "QualityAudit",
     "StrategyDecision",
-    "ImageTransformAgent",
+    "TransformOutput",
     "TransformResult",
     "VisionCriticAgent",
-    "QualityAudit",
     "VisionOrchestrator",
 ]

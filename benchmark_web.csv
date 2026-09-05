@@ -1,0 +1,5 @@
+image,format,intent,original_kb,output_kb,savings_pct,ssim,psnr_db,retries,encode_ms
+document_scan.png,WEBP,web_speed,5.49,0.8,85.41,1.0,100.0,0,4337.76
+logo_transparent.png,WEBP,web_speed,2.9,1.21,58.48,1.0,100.0,0,2496.71
+photo_grain.png,WEBP,web_speed,1201.02,400.4,66.66,0.9462,28.32,3,565.46
+ui_dashboard.png,WEBP,web_speed,3.05,0.39,87.31,1.0,100.0,0,2401.52
