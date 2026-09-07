@@ -332,6 +332,25 @@ Built as a working reference for agentic system design. The transferable ideas:
 
 ---
 
+## 🤖 Agentic AI Alignment
+
+- **Autonomy** — the pipeline decides its own encode settings and can
+  re-encode itself up to three times without a human adjusting a slider;
+  the critic agent's veto is exercised automatically.
+- **Resilience** — the `ssim_floor` feedback loop exists specifically so a
+  plausible-looking but structurally degraded output gets caught and
+  corrected before it reaches a user, rather than shipping the first pass.
+- **Adaptivity** — strategy profiles are swappable per use case; raising
+  quality and re-encoding on a fidelity miss is the system adapting its
+  own parameters to the image at hand, not a fixed one-shot transform.
+
+### Roadmap
+
+- Expose the measure→plan→execute→audit loop as an MCP tool so a larger
+  media pipeline can call it as one step instead of embedding this repo.
+- Add a cloud-native batch mode so the critic's re-encode loop runs across
+  a full asset library, not one image per request.
+
 ## Author
 
 Built by **Asadullah Shafique**.
